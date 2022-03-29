@@ -1,6 +1,3 @@
-
-import java.util.Scanner;
-
 public class Lab2 {
     public static void main(String[] args) {
         System.out.println("C5 is " + 1117 % 5 + " so C5 is  C=A+B ");
