@@ -1,0 +1,53 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class Lab3 {
+    public static void main(String[] args) {
+
+        System.out.println("C3 is " + 1117 % 3 + " so C3 is StringBuilder;");
+        System.out.println("C17 is " + 1117 % 17 + " so C17 task is Відсортувати слова заданого тексту \nза кількістю входжень визначеного символу в них.");
+        
+        StringBuilder s = new StringBuilder("k");
+        StringBuilder text = new StringBuilder("ло kkk fck  gkky4tuy  kkkkkkkkkk g!!?! ggkfgdt hgf, kkлоkk .");
+
+        System.out.println(text);
+
+        String[] text1 = text.toString().replaceAll("[\\p{P}|\\s]+", " ").split(" ");
+        //System.out.println(Arrays.toString(text1));
+
+        Arrays.sort(text1, Comparator.comparing(String::length)); //треба бо text1[text1.length - 1].length() рахує довжину останнього слова
+        //System.out.println(Arrays.toString(text1));
+
+        ArrayList<ArrayList<String>> sorted_w = new ArrayList<>();
+        for (int i = 0; i <= text1[text1.length - 1].length(); i++) {
+            sorted_w.add(new ArrayList<>());
+        }
+        //System.out.println(sorted_w);
+
+        for (String slovo : text1) {
+            int n = 0;
+            int j = 0;
+            while (0 <= j) {
+                j = slovo.indexOf(s.toString(), j);
+                if (0 <= j) {
+                    j++;
+                    n++;
+                }
+            }
+            sorted_w.get(n).add(slovo);
+            //System.out.println(sorted_w);
+        }
+
+        StringBuilder sorted_text = new StringBuilder();
+
+        for (ArrayList<String> str : sorted_w) {
+            for (int j = 0; j < str.size(); j++) {
+                sorted_text.append(str.get(j)).append(" ");
+            }
+        }
+
+        System.out.println(sorted_text);
+        //System.out.println(sorted_text.reverse());
+    }
+}
